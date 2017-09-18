@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+      meta content="width=device-width, initial-scale=1.0" name="viewport"
+        title WeatherApp
+        = stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => true
+        = javascript_include_tag "application", "data-turbolinks-track" => true
+        = csrf_meta_tags
+  body
+    .container
+      nav.navbar.navbar-inverse role="navigation"
+        .navbar-header
+          button.navbar-toggle data-target=".navbar-ex1-collapse" data-toggle="collapse" type="button"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to 'WeatherApp', root_path, :'data-no-turbolink' => true, :class => 'navbar-brand'
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          ul.nav.navbar-nav.navbar-right.navbar-user
+            li= link_to 'Sign In', '#'
+            li= link_to 'Sign up', '#'
+    .container
+      = yield

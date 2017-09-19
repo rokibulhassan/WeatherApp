@@ -4,6 +4,12 @@
       h3 Sign up
       = devise_error_messages!
       .form-group
+        = f.label :name
+        = f.email_field :name, class: 'form-control'
+      .form-group
+        = f.label :city
+        = f.email_field :city_id, class: 'form-control'
+      .form-group
         = f.label :email
         = f.email_field :email, class: 'form-control'
       .form-group

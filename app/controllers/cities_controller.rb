@@ -1,5 +1,7 @@
 class CitiesController < ApplicationController
+  skip_before_action :authenticate_user!
   before_action :set_city, only: [:show, :edit, :update, :destroy]
+
   autocomplete :city, :name
 
   # GET /cities

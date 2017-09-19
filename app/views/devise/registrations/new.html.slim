@@ -5,10 +5,11 @@
       = devise_error_messages!
       .form-group
         = f.label :name
-        = f.email_field :name, class: 'form-control'
+        = f.text_field :name, class: 'form-control'
       .form-group
         = f.label :city
-        = f.email_field :city_id, class: 'form-control'
+        = f.autocomplete_field :city_name, autocomplete_city_name_cities_path, class: 'form-control'
+        = f.hidden_field :city_id, class: 'form-control'
       .form-group
         = f.label :email
         = f.email_field :email, class: 'form-control'
@@ -19,3 +20,8 @@
         = f.label :password_confirmation
         = f.password_field :password_confirmation, class: 'form-control'
       = f.submit 'Sign up', :class => 'btn btn-primary'
+
+javascript:
+  $('#user_city_name').bind('railsAutocomplete.select', function (event, data) {
+    $('#user_city_id').val(data.item.id);
+  });

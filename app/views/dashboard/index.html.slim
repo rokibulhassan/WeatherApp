@@ -1,2 +1,24 @@
-h3="#{@city.name} Today"
-= @weather
+.row
+  h3 Weather Today
+  .col-md-4.pull-right
+    = autocomplete_field_tag :city_name, '', autocomplete_city_name_cities_path, placeholder: 'Search City', class: 'form-control'
+
+
+.row
+  .col-md-12
+    .weather-content
+      = @weather
+
+
+  javascript:
+    $('#city_name').bind('railsAutocomplete.select', function (event, data) {
+      var cityId = data.item.id;
+      $.ajax({
+        method: 'GET',
+        dataType: "json",
+        url: 'dashboard/weather?city_id=' + cityId,
+        success: function (data) {
+          $('.weather-content').text(JSON.stringify(data));
+        }
+      });
+    });
